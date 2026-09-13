@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d14">
+  <title>Privacy Policy · Stardust Trader</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg: #0a0c11;
+      --surface: #11141c;
+      --surface-2: #181d28;
+      --surface-3: #1f2533;
+      --border: #232a38;
+      --border-subtle: #1a1f2b;
+      --text: #eef2f8;
+      --text-2: #8b97b0;
+      --text-3: #5a6579;
+      --accent: #f0b90b;
+      --accent-dim: rgba(240,185,11,0.1);
+      --radius: 10px;
+      --radius-sm: 6px;
+      --radius-lg: 14px;
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-t: env(safe-area-inset-top, 0px);
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overscroll-behavior-y: none;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px calc(48px + var(--safe-b));
+      padding-top: var(--safe-t);
+    }
+
+    /* ===== HEADER ===== */
+    .page-header {
+      padding: 24px 0 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f0b90b 0%, #d4a00a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0a0c11;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .brand-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-3);
+    }
+
+    .meta-line span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .meta-line strong {
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    /* ===== NOTICE CARD ===== */
+    .notice {
+      background: var(--accent-dim);
+      border: 1px solid rgba(240,185,11,0.25);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-2);
+    }
+
+    .notice strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    h2 .num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'SF Mono', 'Roboto Mono', monospace;
+      min-width: 22px;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: var(--text-2);
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 7px;
+      color: var(--text-2);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ===== CONTACT CARD ===== */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 8px;
+    }
+
+    .contact-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-row:first-of-type {
+      padding-top: 0;
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .contact-value {
+      font-size: 13.5px;
+      color: var(--text);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    a.contact-value {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(240,185,11,0.3);
+      padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+
+    a.contact-value:hover,
+    a.contact-value:active {
+      border-color: var(--accent);
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-3);
+      line-height: 1.8;
+    }
+
+    .page-footer .paper-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(240,185,11,0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-2);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 0;
+      margin-bottom: 4px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover,
+    .back-link:active {
+      color: var(--accent);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 600px) {
+      .page {
+        padding: 0 32px calc(64px + var(--safe-b));
+      }
+      h1 { font-size: 30px; }
+      h2 { font-size: 17px; }
+      p, ul li { font-size: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to Stardust Trader
+    </a>
+
+    <header class="page-header">
+      <div class="brand-row">
+        <div class="brand-mark">S</div>
+        <div class="brand-text">
+          <span class="brand-name">Stardust Trader</span>
+          <span class="brand-tag">Paper Trading</span>
+        </div>
+      </div>
+      <h1>Privacy Policy</h1>
+      <div class="meta-line">
+        <span><strong>Effective:</strong> January 1, 2025</span>
+        <span><strong>Last updated:</strong> January 1, 2025</span>
+      </div>
+    </header>
+
+    <div class="notice">
+      <strong>Stardust Trader is a paper-trading simulation.</strong> No real money, real brokerage accounts, or real financial transactions are involved at any point. This policy explains what limited information we collect to operate the simulator, and how we handle it.
+    </div>
+
+    <section>
+      <h2><span class="num">01</span>Overview</h2>
+      <p>Stardust Trader ("we", "us", "the App") is an educational paper-trading platform. This Privacy Policy describes how we collect, use, store, and protect information when you use the App. By using Stardust Trader, you agree to the practices described here.</p>
+      <p>Because Stardust Trader is a simulation, the scope of data we handle is intentionally minimal. We do not collect payment information, banking details, or any real financial account data — because none of that is ever required to use the App.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>Information We Collect</h2>
+
+      <h3>Account Information</h3>
+      <ul>
+        <li>Email address — used to create and authenticate your account</li>
+        <li>Display name — chosen by you, shown in the App</li>
+        <li>Account creation date</li>
+        <li>Authentication identifiers issued by Firebase Authentication</li>
+      </ul>
+
+      <h3>Simulated Trading Data</h3>
+      <ul>
+        <li>Your simulated paper-account balance (starting at $10,000 virtual funds)</li>
+        <li>Simulated holdings, trade history, and pending orders</li>
+        <li>Simulated profit/loss figures and performance statistics</li>
+        <li>Achievements unlocked through simulated activity</li>
+        <li>Watchlist selections, price alerts, and preferences</li>
+      </ul>
+
+      <h3>App Preferences</h3>
+      <ul>
+        <li>Theme preference (dark or light mode)</li>
+        <li>Notification toggles and confirmation settings</li>
+        <li>Learning-center progress</li>
+      </ul>
+
+      <p>We do <strong>not</strong> collect: real payment information, banking details, government IDs, location data, contacts, photos, or any real financial account information.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>How We Use Your Information</h2>
+      <p>Your information is used strictly to operate the paper-trading simulation:</p>
+      <ul>
+        <li>Authenticate you and keep you signed in</li>
+        <li>Persist your simulated portfolio, trade history, and preferences across sessions</li>
+        <li>Display your simulated performance and statistics</li>
+        <li>Deliver in-app notifications for simulated events (orders filled, alerts triggered, achievements unlocked)</li>
+        <li>Improve app stability and fix bugs</li>
+      </ul>
+      <p>We do not use your information for advertising, profiling, or any commercial purpose beyond operating the App.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>Third-Party Services</h2>
+      <p>Stardust Trader relies on the following third-party services to function:</p>
+
+      <h3>Firebase (Google)</h3>
+      <ul>
+        <li><strong>Firebase Authentication</strong> — manages secure email/password sign-in</li>
+        <li><strong>Cloud Firestore</strong> — stores your simulated trading data and preferences</li>
+      </ul>
+      <p>Firebase processes data on Google Cloud infrastructure. Google's privacy practices apply to the underlying infrastructure. For more information, see Google's Privacy Policy at <a href="https://policies.google.com/privacy" style="color:var(--accent);text-decoration:underline;">policies.google.com/privacy</a>.</p>
+
+      <h3>Content Delivery</h3>
+      <ul>
+        <li>Font Awesome (icons) and Lightweight Charts (charting) are loaded via public CDNs</li>
+        <li>These CDNs may log standard technical request data (IP address, user agent) as part of normal web delivery</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span>Data Storage &amp; Security</h2>
+      <p>Your data is stored in Google Cloud Firestore. Each user's data is isolated under their own authenticated user ID, and access is restricted so that one user cannot read another user's data.</p>
+      <p>We use Firebase Authentication for sign-in. Passwords are never stored in our database — they are handled entirely by Firebase Authentication using industry-standard secure hashing.</p>
+      <p>No method of transmission or storage is 100% secure. While we follow reasonable practices, we cannot guarantee absolute security. Do not reuse a real banking password for this App.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span>No Financial Transactions</h2>
+      <p>Stardust Trader never processes real money. Specifically:</p>
+      <ul>
+        <li>No deposits, withdrawals, or payments are accepted</li>
+        <li>No real brokerage account is connected</li>
+        <li>No real orders are ever placed on any exchange or market</li>
+        <li>All balances, prices, and trades are simulated for educational purposes</li>
+      </ul>
+      <p>Because there are no real financial transactions, we never collect or store payment credentials of any kind.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>Data Sharing</h2>
+      <p>We do not sell, rent, or trade your personal information. We do not share your data with advertisers or data brokers. Data is only processed by the third-party services listed in Section 04, strictly to operate the App.</p>
+      <p>We may disclose information if required by law, regulation, or valid legal process, or to protect the safety and rights of users or the public.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>Your Rights &amp; Controls</h2>
+
+      <h3>Access &amp; Correction</h3>
+      <ul>
+        <li>You can view and update your display name from the Profile &rarr; Edit Profile section</li>
+        <li>You can view all stored simulated trading data within the App</li>
+      </ul>
+
+      <h3>Reset Simulated Data</h3>
+      <ul>
+        <li>You can reset your paper account (balance, holdings, trades, statistics) from Settings &rarr; Reset Paper Account</li>
+      </ul>
+
+      <h3>Delete Your Account</h3>
+      <ul>
+        <li>You can permanently delete your account from Settings &rarr; Delete Account</li>
+        <li>Deletion removes your Firebase Authentication account and all associated Firestore data</li>
+        <li>This action is irreversible</li>
+      </ul>
+
+      <p>Depending on your jurisdiction, you may have additional rights (such as data portability or the right to lodge a complaint with a supervisory authority). To exercise any such right, contact us using the details in Section 11.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span>Children's Privacy</h2>
+      <p>Stardust Trader is not directed at children under the age of 13 (or the equivalent minimum age in your jurisdiction). We do not knowingly collect personal information from children. If you believe a child has provided us with information, please contact us so we can remove it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. Continued use of the App after changes take effect constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or how your data is handled, please contact us:</p>
+
+      <div class="contact-card">
+        <h3>Support &amp; Inquiries</h3>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-body">
+            <div class="contact-label">Email Support</div>
+            <a class="contact-value" href="mailto:support.stardustofficial@gmail.com">support.stardustofficial@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.68.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+          </div>
+          <div class="contact-body">
+            <div class="contact-label">Developer</div>
+            <a class="contact-value" href="https://zishutron.github.io" target="_blank" rel="noopener noreferrer">zishutron.github.io</a>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="contact-body">
+            <div class="contact-label">Response Time</div>
+            <div class="contact-value">Within 2–5 business days</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span class="paper-badge">PAPER TRADING</span>
+      <div>Stardust Trader &middot; Educational Paper Trading Platform</div>
+      <div>No real money &middot; No brokerage &middot; Simulated only</div>
+      <div style="margin-top:10px;">
+        <a href="terms.html" style="color:var(--accent);text-decoration:none;">Terms of Service</a>
+        &nbsp;&middot;&nbsp;
+        <a href="index.html" style="color:var(--accent);text-decoration:none;">Open App</a>
+      </div>
+      <div style="margin-top:12px;opacity:0.7;">&copy; 2025 Stardust Trader. All rights reserved.</div>
+    </footer>
+
+  </div>
+</body>
+</html>
