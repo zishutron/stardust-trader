@@ -992,6 +992,25 @@
 
     .toggle-link:active { background: var(--surface-2); }
 
+    .login-legal {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    .login-legal a {
+      color: var(--accent);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .login-legal a:active {
+      opacity: 0.7;
+    }
+
     /* ============================================================
        LOADING
        ============================================================ */
@@ -1243,27 +1262,6 @@
     .notif-dot.read { background: transparent; }
 
     /* ============================================================
-       OFFLINE BANNER
-       ============================================================ */
-    .offline-banner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: var(--red);
-      color: #fff;
-      text-align: center;
-      padding: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      z-index: 2000;
-      transform: translateY(-100%);
-      transition: transform 0.3s;
-    }
-
-    .offline-banner.show { transform: translateY(0); }
-
-    /* ============================================================
        SKELETON
        ============================================================ */
     .skeleton {
@@ -1357,9 +1355,6 @@
 <!-- ==================== LOADING ==================== -->
 <div id="loadingOverlay"><div class="spinner"></div></div>
 
-<!-- ==================== OFFLINE BANNER ==================== -->
-<div id="offlineBanner" class="offline-banner">Connection unavailable</div>
-
 <!-- ==================== LOGIN SCREEN ==================== -->
 <div id="loginScreen" class="hidden">
   <div class="login-box">
@@ -1379,6 +1374,10 @@
       </div>
       <div id="toggleSignup" class="toggle-link">New user? Create account</div>
     </div>
+    <div class="login-legal">
+      By continuing, you agree to our<br>
+      <a onclick="openLegalFromLogin('terms')">Terms of Service</a> and <a onclick="openLegalFromLogin('privacy')">Privacy Policy</a>
+    </div>
     <div class="text-center text-xs text-dim mt-4">
       <i class="fas fa-shield-alt"></i> Simulated environment · No real money
     </div>
@@ -1397,11 +1396,11 @@
       </div>
     </div>
     <div class="header-right">
-      <button class="header-btn" id="headerNotifBtn" aria-label="Notifications">
+      <button class="header-btn" id="headerNotifBtn" aria-label="Notifications" onclick="showView('notifications')">
         <i class="fas fa-bell"></i>
         <span class="badge hidden" id="headerNotifBadge">0</span>
       </button>
-      <button class="header-btn" id="headerProfileBtn" aria-label="Profile">
+      <button class="header-btn" id="headerProfileBtn" aria-label="Profile" onclick="showView('profile')">
         <div class="avatar" style="width:28px;height:28px;font-size:11px;" id="headerAvatar">T</div>
       </button>
     </div>
@@ -1413,7 +1412,6 @@
     <!-- ==================== HOME SCREEN ==================== -->
     <div id="screen-home" class="screen active">
       <div class="scroll-area">
-        <!-- Greeting -->
         <div class="row-between mb-3">
           <div>
             <div class="text-xs text-dim" id="greetingText">Good morning</div>
@@ -1422,7 +1420,6 @@
           <span class="badge badge-paper">Paper Account</span>
         </div>
 
-        <!-- Balance Hero -->
         <div class="card-elevated mb-3" style="background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);">
           <div class="text-xs text-dim mb-1">Portfolio Value</div>
           <div class="text-2xl font-bold font-mono mb-1" id="homePortfolioValue">$10,000.00</div>
@@ -1450,7 +1447,6 @@
           </div>
         </div>
 
-        <!-- Quick Actions -->
         <div class="quick-actions mb-4">
           <button class="quick-action" onclick="showView('trade')">
             <i class="fas fa-arrow-up"></i>
@@ -1470,19 +1466,15 @@
           </button>
         </div>
 
-        <!-- Market Overview -->
         <div class="section-title">Market Overview</div>
         <div class="card-flat mb-4" id="homeMarketList"></div>
 
-        <!-- Watchlist Preview -->
         <div class="section-title">Watchlist</div>
         <div class="card-flat mb-4" id="homeWatchlist"></div>
 
-        <!-- Recent Trades -->
         <div class="section-title">Recent Trades</div>
         <div class="card-flat mb-4" id="homeRecentTrades"></div>
 
-        <!-- Trade Review -->
         <div class="section-title">Trade Review</div>
         <div class="card mb-4" id="homeTradeReview">
           <div class="text-sm text-muted">Complete some paper trades to receive educational insights.</div>
@@ -1516,7 +1508,6 @@
     <!-- ==================== ASSET DETAIL / TRADE SCREEN ==================== -->
     <div id="screen-trade" class="screen">
       <div class="scroll-area" style="padding-top:8px;">
-        <!-- Asset Header -->
         <div class="asset-header">
           <button class="back-btn" onclick="showView('markets')" aria-label="Back">
             <i class="fas fa-arrow-left"></i>
@@ -1530,18 +1521,15 @@
           </button>
         </div>
 
-        <!-- Price -->
         <div class="row-gap mb-3">
           <span class="price-big" id="tradePrice">$28,450.00</span>
           <span class="price-change" id="tradeChange">+0.00%</span>
         </div>
 
-        <!-- Chart -->
         <div class="chart-box mb-2" style="height:240px;">
           <div id="tradeChart" style="width:100%;height:100%;"></div>
         </div>
 
-        <!-- Timeframes -->
         <div class="tabs mb-3" id="tradeTimeframes">
           <button class="tab active" data-tf="1m">1m</button>
           <button class="tab" data-tf="5m">5m</button>
@@ -1551,7 +1539,6 @@
           <button class="tab" data-tf="1d">1D</button>
         </div>
 
-        <!-- Market Stats -->
         <div class="card mb-3">
           <div class="row-between text-xs mb-2"><span class="text-dim">Open</span><span class="font-mono" id="statOpen">-</span></div>
           <div class="row-between text-xs mb-2"><span class="text-dim">High</span><span class="font-mono" id="statHigh">-</span></div>
@@ -1559,7 +1546,6 @@
           <div class="row-between text-xs"><span class="text-dim">Volume</span><span class="font-mono" id="statVolume">-</span></div>
         </div>
 
-        <!-- Position Info -->
         <div class="card mb-3 hidden" id="positionCard">
           <div class="text-xs text-dim mb-1">Your Position</div>
           <div class="row-between text-sm mb-1"><span>Quantity</span><span class="font-mono" id="posQty">0</span></div>
@@ -1567,7 +1553,6 @@
           <div class="row-between text-sm"><span>P&L</span><span class="font-mono" id="posPnl">$0</span></div>
         </div>
 
-        <!-- Trade Ticket -->
         <div class="card mb-4">
           <div class="tabs mb-3" id="tradeSideTabs">
             <button class="tab tab-buy active" data-side="buy">BUY</button>
@@ -1629,7 +1614,6 @@
       <div class="scroll-area">
         <h2 class="text-lg font-bold mb-3">Portfolio</h2>
 
-        <!-- Summary -->
         <div class="card-elevated mb-3">
           <div class="text-xs text-dim mb-1">Total Portfolio Value</div>
           <div class="text-2xl font-bold font-mono mb-3" id="portfolioTotalValue">$10,000.00</div>
@@ -1661,7 +1645,6 @@
           </div>
         </div>
 
-        <!-- Allocation -->
         <div class="section-title">Allocation</div>
         <div class="card mb-3">
           <div class="row-gap">
@@ -1672,16 +1655,13 @@
           </div>
         </div>
 
-        <!-- Holdings -->
         <div class="section-title">Holdings</div>
         <div class="card-flat mb-3" id="portfolioHoldings"></div>
 
-        <!-- Orders Link -->
         <button class="btn btn-secondary btn-block mb-3" onclick="showView('orders')">
           <i class="fas fa-list-alt"></i> View Orders
         </button>
 
-        <!-- History Link -->
         <button class="btn btn-secondary btn-block mb-4" onclick="showView('history')">
           <i class="fas fa-history"></i> Trade History
         </button>
@@ -1720,7 +1700,6 @@
           <h2 class="text-lg font-bold">Trade History</h2>
         </div>
 
-        <!-- Stats Summary -->
         <div class="card mb-3">
           <div class="stat-grid-3">
             <div><div class="text-xs text-dim">Total</div><div class="font-mono font-bold" id="histTotal">0</div></div>
@@ -1735,7 +1714,6 @@
           </div>
         </div>
 
-        <!-- Filters -->
         <div class="tabs mb-3" id="historyFilters">
           <button class="tab active" data-hf="all">All</button>
           <button class="tab" data-hf="buy">Buy</button>
@@ -1751,7 +1729,6 @@
     <!-- ==================== PROFILE SCREEN ==================== -->
     <div id="screen-profile" class="screen">
       <div class="scroll-area">
-        <!-- Profile Header -->
         <div class="row-gap mb-4" style="gap:14px;">
           <div class="avatar lg" id="profileAvatar">T</div>
           <div class="flex-1">
@@ -1764,7 +1741,6 @@
           </div>
         </div>
 
-        <!-- Account Type -->
         <div class="card mb-3" style="padding:10px 14px;">
           <div class="row-between">
             <span class="text-sm text-dim">Account Type</span>
@@ -1772,7 +1748,6 @@
           </div>
         </div>
 
-        <!-- Stats -->
         <div class="section-title">Trading Statistics</div>
         <div class="card mb-3">
           <div class="stat-grid">
@@ -1783,7 +1758,6 @@
           </div>
         </div>
 
-        <!-- XP / Level -->
         <div class="card mb-3">
           <div class="row-between mb-2">
             <span class="text-sm font-medium" id="profileLevelName">Beginner</span>
@@ -1795,19 +1769,16 @@
           <div class="text-xs text-dim" id="profileNextLevel"></div>
         </div>
 
-        <!-- Achievements -->
         <div class="section-title">Achievements</div>
         <div class="card mb-3" id="profileAchievements">
           <div class="empty-state" style="padding:16px;"><i class="fas fa-trophy"></i>No achievements yet</div>
         </div>
 
-        <!-- Watchlist Summary -->
         <div class="section-title">Watchlist</div>
         <div class="card mb-3" id="profileWatchlist">
           <div class="text-xs text-dim text-center" style="padding:8px;">No assets in watchlist</div>
         </div>
 
-        <!-- Menu -->
         <div class="card-flat mb-3">
           <div class="settings-row" onclick="showView('settings')">
             <span class="label"><i class="fas fa-cog"></i> Settings</span>
@@ -1827,7 +1798,6 @@
           </div>
         </div>
 
-        <!-- Logout -->
         <button class="btn btn-danger btn-block mb-4" onclick="confirmLogout()">
           <i class="fas fa-sign-out-alt"></i> Log Out
         </button>
@@ -1848,7 +1818,6 @@
           <h2 class="text-lg font-bold">Settings</h2>
         </div>
 
-        <!-- Account -->
         <div class="section-title">Account</div>
         <div class="card-flat mb-3">
           <div class="settings-row" onclick="showEditProfileModal()">
@@ -1873,7 +1842,6 @@
           </div>
         </div>
 
-        <!-- Trading -->
         <div class="section-title">Trading</div>
         <div class="card-flat mb-3">
           <div class="settings-row" style="cursor:default;">
@@ -1898,7 +1866,6 @@
           </div>
         </div>
 
-        <!-- Appearance -->
         <div class="section-title">Appearance</div>
         <div class="card-flat mb-3">
           <div class="settings-row" onclick="toggleDarkMode()">
@@ -1907,7 +1874,6 @@
           </div>
         </div>
 
-        <!-- Notifications -->
         <div class="section-title">Notifications</div>
         <div class="card-flat mb-3">
           <div class="settings-row" onclick="toggleSetting('notifTrade')">
@@ -1928,20 +1894,18 @@
           </div>
         </div>
 
-        <!-- Privacy & Legal -->
         <div class="section-title">Privacy & Legal</div>
         <div class="card-flat mb-3">
-          <div class="settings-row" onclick="showLegal('privacy')">
+          <div class="settings-row" onclick="window.location.href='privacy.html'">
             <span class="label"><i class="fas fa-shield-alt"></i> Privacy Policy</span>
-            <i class="fas fa-chevron-right text-dim"></i>
+            <i class="fas fa-external-link-alt text-dim"></i>
           </div>
-          <div class="settings-row" onclick="showLegal('terms')">
+          <div class="settings-row" onclick="window.location.href='terms.html'">
             <span class="label"><i class="fas fa-file-contract"></i> Terms of Service</span>
-            <i class="fas fa-chevron-right text-dim"></i>
+            <i class="fas fa-external-link-alt text-dim"></i>
           </div>
         </div>
 
-        <!-- About -->
         <div class="section-title">About</div>
         <div class="card-flat mb-4">
           <div class="settings-row" style="cursor:default;">
@@ -2008,26 +1972,13 @@
         <div class="card mb-3">
           <div class="row-between mb-2">
             <span class="text-sm font-medium">Progress</span>
-            <span class="text-xs text-dim" id="learnProgressText">0 / 10</span>
+            <span class="text-xs text-dim" id="learnProgressText">0 / 11</span>
           </div>
           <div class="progress-bar">
             <div class="progress-bar-fill" id="learnProgressBar" style="width:0%;"></div>
           </div>
         </div>
         <div id="lessonsList"></div>
-      </div>
-    </div>
-
-    <!-- ==================== LEGAL SCREEN ==================== -->
-    <div id="screen-legal" class="screen">
-      <div class="scroll-area">
-        <div class="row-gap mb-4">
-          <button class="back-btn" onclick="showView('settings')" aria-label="Back">
-            <i class="fas fa-arrow-left"></i>
-          </button>
-          <h2 class="text-lg font-bold" id="legalTitle">Legal</h2>
-        </div>
-        <div class="card" id="legalContent" style="line-height:1.7;font-size:13px;"></div>
       </div>
     </div>
 
@@ -2186,7 +2137,6 @@ const $ = id => document.getElementById(id);
 const loadingOverlay = $('loadingOverlay');
 const loginScreen = $('loginScreen');
 const appEl = $('app');
-const offlineBanner = $('offlineBanner');
 
 /* ================================================================
    UTILITY FUNCTIONS
@@ -2335,20 +2285,17 @@ window.addEventListener('popstate', (e) => {
 });
 
 function handleBack() {
-  // If modal is open, close it
   const modal = $('modalOverlay');
   if (modal && modal.classList.contains('show')) {
     closeModal();
     return;
   }
-  // If not on main nav views, go back
   if (!['home', 'markets', 'trade', 'portfolio', 'profile'].includes(currentView)) {
     window._goingBack = true;
     const prev = navHistory.pop() || 'home';
     showView(prev);
     return;
   }
-  // Otherwise go to previous view
   if (navHistory.length > 0) {
     window._goingBack = true;
     const prev = navHistory.pop();
@@ -2376,6 +2323,14 @@ function closeModal(e) {
 }
 
 /* ================================================================
+   LEGAL LINKS FROM LOGIN SCREEN
+   ================================================================ */
+function openLegalFromLogin(type) {
+  const url = type === 'privacy' ? 'privacy.html' : 'terms.html';
+  window.open(url, '_blank');
+}
+
+/* ================================================================
    AUTHENTICATION
    ================================================================ */
 auth.onAuthStateChanged(async (user) => {
@@ -2386,7 +2341,6 @@ auth.onAuthStateChanged(async (user) => {
       const doc = await db.collection('users').doc(user.uid).get();
       if (doc.exists) {
         const d = doc.data();
-        // Migrate / merge with defaults
         userData = {
           cash: d.cash !== undefined ? d.cash : 10000,
           holdings: d.holdings || [],
@@ -2417,17 +2371,14 @@ auth.onAuthStateChanged(async (user) => {
           createdAt: d.createdAt || null
         };
       } else {
-        // New user
         userData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
         userData.name = user.displayName || 'Trader';
         await db.collection('users').doc(user.uid).set(userData);
       }
     } catch (e) {
       console.error('Firestore error:', e);
-      showOffline(true);
     }
 
-    // Apply theme
     if (!userData.settings.darkMode) document.body.classList.add('light-mode');
     else document.body.classList.remove('light-mode');
 
@@ -2435,10 +2386,7 @@ auth.onAuthStateChanged(async (user) => {
     appEl.classList.remove('hidden');
     loadingOverlay.classList.add('hidden');
 
-    // Start market engine
     startMarketEngine();
-
-    // Initialize app
     showView('home');
     updateUI();
   } else {
@@ -2532,7 +2480,7 @@ function friendlyAuthError(e) {
 }
 
 /* ================================================================
-   FIREBASE SAVE
+   FIREBASE SAVE — CRITICAL FIX
    ================================================================ */
 async function saveUserData() {
   if (!currentUser) return;
@@ -2558,14 +2506,6 @@ async function saveUserData() {
     }, { merge: true });
   } catch (e) {
     console.error('Save error:', e);
-    showOffline(true);
-  }
-}
-
-function showOffline(show) {
-  if (offlineBanner) {
-    offlineBanner.classList.toggle('show', show);
-    if (show) setTimeout(() => offlineBanner.classList.remove('show'), 4000);
   }
 }
 
@@ -2849,13 +2789,11 @@ function updateTradeView() {
   const wlBtn = $('tradeWatchlistBtn');
   if (wlBtn) wlBtn.innerHTML = `<i class="${inWl ? 'fas' : 'far'} fa-star"></i>`;
 
-  // Stats
   $('statOpen').textContent = fmtPrice(s.open);
   $('statHigh').textContent = fmtPrice(s.high);
   $('statLow').textContent = fmtPrice(s.low);
   $('statVolume').textContent = Math.round(s.volume).toLocaleString();
 
-  // Position
   const holding = (userData.holdings || []).find(h => h.symbol === currentAsset);
   const posCard = $('positionCard');
   if (holding && holding.qty > 0) {
@@ -2869,7 +2807,6 @@ function updateTradeView() {
     posCard.classList.add('hidden');
   }
 
-  // Ticket
   updateTicket();
 }
 
@@ -2996,7 +2933,6 @@ function initTradeChart() {
   tradeCandleSeries.setData(candleData);
   tradeChartInstance.timeScale().fitContent();
 
-  // Resize observer
   if (window._chartResizeObserver) window._chartResizeObserver.disconnect();
   window._chartResizeObserver = new ResizeObserver(() => {
     if (tradeChartInstance && container.clientWidth > 0) {
@@ -3126,14 +3062,12 @@ async function executeTrade() {
   const limitPrice = parseFloat($('limitPrice').value) || 0;
 
   if (orderType === 'market') {
-    // Execute immediately
     const success = await executeMarketOrder(currentAsset, tradeSide, qty, price, sl, tp);
     if (success) {
       notify(`${tradeSide.toUpperCase()} ${qty} ${currentAsset} @ ${fmtPrice(price)}`);
       updateUI();
     }
   } else {
-    // Create pending order
     userData.orders.push({
       id: Date.now().toString(),
       symbol: currentAsset,
@@ -3195,16 +3129,14 @@ async function executeMarketOrder(sym, side, qty, price, sl, tp) {
     tp: tp
   };
 
-  // For sells, we already computed pl above — recalculate for record
   if (side === 'sell') {
-    // pl already added to realizedPnl
+    // pl already added
   } else {
     tradeRecord.pl = 0;
   }
 
   userData.trades.push(tradeRecord);
 
-  // Schedule SL/TP monitoring
   if (sl > 0 || tp > 0) {
     scheduleSLTP(sym, qty, price, sl, tp, tradeRecord.time);
   }
@@ -3216,7 +3148,7 @@ async function executeMarketOrder(sym, side, qty, price, sl, tp) {
 }
 
 /* ================================================================
-   SL/TP MONITORING — PERSISTENT CHECK
+   SL/TP MONITORING
    ================================================================ */
 const activeSLTP = [];
 
@@ -3340,10 +3272,6 @@ function calcUnrealizedPnl() {
   return total;
 }
 
-function calcTotalPnl() {
-  return (userData.realizedPnl || 0) + calcUnrealizedPnl();
-}
-
 /* ================================================================
    PORTFOLIO SCREEN
    ================================================================ */
@@ -3406,7 +3334,6 @@ function renderPortfolioHoldings() {
   container.innerHTML = html;
 }
 
-/* Deterministic colors based on symbol */
 function symbolColor(sym) {
   const colors = ['#f0b90b', '#2ebd6b', '#e0544b', '#5a8dee', '#9b59b6', '#1abc9c', '#e67e22', '#3498db', '#e91e63', '#00bcd4'];
   let hash = 0;
@@ -3483,7 +3410,6 @@ function updateProfile() {
   $('profileRealizedPnl').style.color = (userData.realizedPnl || 0) >= 0 ? 'var(--green)' : 'var(--red)';
   $('profileStreak').textContent = userData.streak || 0;
 
-  // XP / Level
   const levels = ['Beginner', 'Explorer', 'Practiced', 'Advanced', 'Disciplined', 'Pro', 'Simulator'];
   const xp = trades.length * 10;
   const levelIdx = Math.min(Math.floor(xp / 100), levels.length - 1);
@@ -3499,7 +3425,6 @@ function updateProfile() {
     $('profileNextLevel').textContent = 'Maximum level reached';
   }
 
-  // Join date
   if (userData.createdAt) {
     const d = userData.createdAt.toDate ? userData.createdAt.toDate() : new Date(userData.createdAt);
     $('profileJoinDate').textContent = 'Joined ' + d.toLocaleDateString([], { month: 'short', year: 'numeric' });
@@ -3507,10 +3432,8 @@ function updateProfile() {
     $('profileJoinDate').textContent = '';
   }
 
-  // Achievements
   renderAchievements();
 
-  // Watchlist summary
   const wl = userData.watchlist || [];
   const wlEl = $('profileWatchlist');
   if (wl.length === 0) {
@@ -3967,7 +3890,6 @@ async function cancelOrder(id) {
   renderOrders();
 }
 
-/* Orders tabs */
 document.addEventListener('click', (e) => {
   const tab = e.target.closest('#ordersTabs .tab');
   if (tab) {
@@ -3986,7 +3908,6 @@ function renderHistory() {
   if (!container) return;
   let trades = userData.trades || [];
 
-  // Stats
   const sells = trades.filter(t => t.side === 'sell' || t.side === 'auto-close');
   const wins = sells.filter(t => (t.pl || 0) > 0);
   const losses = sells.filter(t => (t.pl || 0) < 0);
@@ -4008,7 +3929,6 @@ function renderHistory() {
   $('histBest').textContent = '$' + best.toFixed(2);
   $('histWorst').textContent = '$' + Math.abs(worst).toFixed(2);
 
-  // Filter
   if (historyFilter === 'buy') trades = trades.filter(t => t.side === 'buy');
   if (historyFilter === 'sell') trades = trades.filter(t => t.side === 'sell');
   if (historyFilter === 'profit') trades = trades.filter(t => (t.pl || 0) > 0);
@@ -4038,7 +3958,6 @@ function renderHistory() {
   container.innerHTML = html;
 }
 
-/* History filters */
 document.addEventListener('click', (e) => {
   const tab = e.target.closest('#historyFilters .tab');
   if (tab) {
@@ -4125,53 +4044,11 @@ async function completeLesson(index) {
 }
 
 /* ================================================================
-   LEGAL SCREENS
-   ================================================================ */
-function showLegal(type) {
-  const content = $('legalContent');
-  const title = $('legalTitle');
-  if (type === 'privacy') {
-    title.textContent = 'Privacy Policy';
-    content.innerHTML = `
-      <p class="mb-3"><strong>Information We Collect</strong></p>
-      <p class="text-secondary mb-3">We use Firebase Authentication to manage your account. We store your email address, display name, and simulated trading data (portfolio, trades, watchlist, alerts, achievements) in Firebase Firestore.</p>
-      <p class="mb-3"><strong>How We Use Your Information</strong></p>
-      <p class="text-secondary mb-3">Your data is used solely to operate the paper trading simulation and persist your progress. We do not sell or share your personal information with third parties.</p>
-      <p class="mb-3"><strong>Data Storage</strong></p>
-      <p class="text-secondary mb-3">Data is stored securely in Firebase (Google Cloud). Local preferences may be stored in your browser's localStorage.</p>
-      <p class="mb-3"><strong>No Financial Transactions</strong></p>
-      <p class="text-secondary mb-3">This application does not process real money, deposits, withdrawals, or brokerage transactions. All trading is simulated.</p>
-      <p class="mb-3"><strong>Account Deletion</strong></p>
-      <p class="text-secondary">You can delete your account at any time from Settings. This permanently removes your Firebase Authentication account and all associated Firestore data.</p>
-    `;
-  } else {
-    title.textContent = 'Terms of Service';
-    content.innerHTML = `
-      <p class="mb-3"><strong>Paper Trading Only</strong></p>
-      <p class="text-secondary mb-3">Stardust Trader is a paper trading simulator. No real money is involved. No real orders are placed on any exchange or brokerage.</p>
-      <p class="mb-3"><strong>Simulated Prices</strong></p>
-      <p class="text-secondary mb-3">Prices and market data shown are simulated and may not reflect real market conditions. They are for educational purposes only.</p>
-      <p class="mb-3"><strong>No Investment Advice</strong></p>
-      <p class="text-secondary mb-3">Nothing in this app constitutes financial, investment, or trading advice. You are responsible for how you interpret educational information.</p>
-      <p class="mb-3"><strong>No Guarantee of Accuracy</strong></p>
-      <p class="text-secondary mb-3">Simulated results do not predict real-world trading performance. Past simulated performance is not indicative of future results.</p>
-      <p class="mb-3"><strong>Limitation of Liability</strong></p>
-      <p class="text-secondary">The app is provided "as is" without warranties of any kind. We are not liable for any decisions made based on simulated results.</p>
-    `;
-  }
-  showView('legal');
-}
-
-/* ================================================================
    INITIALIZATION
    ================================================================ */
-// Start SL/TP check interval
 setInterval(checkSLTPRules, 5000);
-
-// Back button setup
 history.pushState({ view: 'home' }, '', '');
 
-// Expose functions globally
 window.showView = showView;
 window.openAsset = openAsset;
 window.toggleWatchlist = toggleWatchlist;
@@ -4194,12 +4071,12 @@ window.toggleAlert = toggleAlert;
 window.deleteAlert = deleteAlert;
 window.openLesson = openLesson;
 window.completeLesson = completeLesson;
-window.showLegal = showLegal;
 window.toggleSetting = toggleSetting;
 window.toggleDarkMode = toggleDarkMode;
 window.cancelOrder = cancelOrder;
 window.executeTrade = executeTrade;
 window.renderMarkets = renderMarkets;
+window.openLegalFromLogin = openLegalFromLogin;
 
 console.log('Stardust Trader initialized');
 </script>
